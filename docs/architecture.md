@@ -1,21 +1,30 @@
 # SecureCloud Architecture
 
-## Planned Workflow
+## Purpose
 
-Developer
-  -> Terraform configuration
-  -> Formatting and validation
-  -> Security scanning and policy checks
-  -> Review of planned changes
-  -> Optional cloud deployment after cost and security review
+SecureCloud is a learning project that defines an AWS infrastructure
+security foundation using Terraform.
 
-## Deployment Boundary
+## Components
 
-The initial development and testing workflow will run locally or
-through eligible free GitHub workflows. No AWS infrastructure is
-created by this documentation.
+- VPC: isolated network address space.
+- Public subnets: subnets associated with a route table that has an
+  internet gateway default route.
+- Private subnets: subnets whose route tables do not define a default
+  internet route.
+- Internet gateway: configured as the VPC's internet route target.
+- Web security group: allows TCP ports 80 and 443 from the configured
+  source CIDR and defines outbound IPv4 traffic.
+- S3 logging bucket: configured with public access blocking,
+  AES256 server-side encryption, and versioning.
 
-## Status
+## Terraform layout
 
-This is the initial planned architecture. The implementation and
-test evidence will be added as the project develops.
+- environments/dev: root configuration for the development environment.
+- modules/network: reusable network configuration.
+- modules/secure_storage: reusable S3 storage configuration.
+
+## Deployment status
+
+This repository defines infrastructure configuration only.
+No AWS resources are deployed as part of this learning exercise.

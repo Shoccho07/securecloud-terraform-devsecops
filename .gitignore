@@ -1,32 +1,33 @@
-# Terraform working files
+# Terraform working directory and state
 **/.terraform/*
 *.tfstate
 *.tfstate.*
 *.tfplan
 crash.log
 crash.*.log
+
+# Local Terraform overrides
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Sensitive variable files
+# Variable files may contain secrets
 *.tfvars
 *.tfvars.json
-!example.tfvars
 
-# Secrets and local environment settings
+# Credentials and environment secrets
 .env
 .env.*
 !.env.example
 *.pem
 *.key
+credentials
 secrets/
+
+# Python virtual environments and cache
+.venv/
+__pycache__/
 
 # macOS
 .DS_Store
-
-# Editors
-.vscode/
-.idea/
-*.swp
